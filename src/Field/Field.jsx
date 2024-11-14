@@ -20,7 +20,7 @@ export default function Field({ cells, setCells }) {
           // На что надо заменить ${position.coords.latitude}, ${position.coords.longitude}
           body: "data=" + encodeURIComponent(`
             [out:json][timeout: 90];
-            node(around:20, ${51.6752768}, ${39.2116777});
+            node(around:20, ${position.coords.latitude}, ${position.coords.longitude});
             <;
             relation._[type=route][route=bus];
             out tags;
