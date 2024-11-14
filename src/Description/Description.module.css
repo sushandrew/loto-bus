@@ -1,0 +1,13 @@
+.description {
+  margin: 20px 0;
+}
+
+.descriptionInner {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.description h2 {
+  font-size: 1.25rem;
+}

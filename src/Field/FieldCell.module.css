@@ -1,0 +1,48 @@
+.fieldCell {
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border: none;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color .3s;
+}
+
+.fieldCell:first-child {
+  border-top-left-radius: 10px;
+}
+
+.fieldCell:nth-child(5) {
+  border-top-right-radius: 10px;
+}
+
+.fieldCell:nth-child(21) {
+  border-bottom-left-radius: 10px;
+}
+
+.fieldCell:nth-child(25) {
+  border-bottom-right-radius: 10px;
+}
+
+.fieldCell:hover {
+  background-color: #fd9c14;
+}
+
+.checked {
+  background-color: #03b800;
+}
+
+.checked:hover {
+  background-color: #03a000;
+}
+
+
+@media (min-width: 768px) {
+  .fieldCell {
+    width: 70px;
+    height: 70px;
+    font-size: 1.5rem;
+  }
+}

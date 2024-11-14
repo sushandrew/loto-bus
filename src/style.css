@@ -1,0 +1,13 @@
+body {
+  font-family: sans-serif;
+  background-color: #ffaf40;
+  color: #fff;
+  font-size: 1rem;
+}
+
+
+@media (min-width: 768px) {
+  body {
+    font-size: 1.25rem;
+  }
+}
