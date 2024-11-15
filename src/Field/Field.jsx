@@ -54,11 +54,22 @@ export default function Field({ cells, setCells }) {
     }
 
     if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(position => {
+      const options = {
+        enableHighAccuracy: true,
+        timeout: Infinity,
+        maximumAge: 0
+      }
+
+      function error(err) {
+        console.warn(`error${err.code}: ${err.message}`)
+      }
+
+      function success(position) {
         fetchData(position)
-      })
+      }
+
+      navigator.geolocation.getCurrentPosition(success, error, options)
     }
-    // fetchData()
   }, [])
 
   // Обработчик нажатия на ячейки
