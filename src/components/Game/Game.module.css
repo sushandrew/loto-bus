@@ -1,0 +1,19 @@
+.gameMenu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  transform: translateY(-100vh);
+  transition: transform .3s;
+}
+
+.gameMenuInner {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--clr-main);
+  border-radius: 15px;
+}
+
+.active {
+  transform: translateY(0);
+}

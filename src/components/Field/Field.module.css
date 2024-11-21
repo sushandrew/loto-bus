@@ -7,16 +7,7 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  border-bottom: 2px solid #fff;
-  border-right: 2px solid #fff;
-  border-radius: 10px;
 }
-
-.error {
-  margin: 20px 0;
-  text-align: center;
-}
-
 .hidden {
   display: none;
 }

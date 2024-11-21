@@ -1,0 +1,23 @@
+.menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  transform: translateY(-100vh);
+  transition: transform .3s;
+}
+
+.menuInner {
+  width: fit-content;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px 20px;
+  background-color: var(--clr-main);
+  border-radius: 15px;
+}
+
+.active {
+  transform: translateY(0);
+}
