@@ -5,3 +5,9 @@
   border: none;
   cursor: pointer;
 }
+
+.resetSvg {
+  width: 28px;
+  height: 28px;
+  fill: var(--clr-details);
+}

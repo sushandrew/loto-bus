@@ -1,11 +1,11 @@
 import styles from './SettingsBtn.module.css'
 
-import settingsSvg from './settings.svg'
+import SettingsSvg from './settings.svg?react'
 
 export default function SettingsBtn({ onClick }) {
   return (
     <button className={styles.settingsBtn} onClick={onClick}>
-      <img src={settingsSvg} alt="Настройки" />
+      <SettingsSvg className={styles.settingsSvg} />
     </button>
   )
 }

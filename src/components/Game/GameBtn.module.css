@@ -6,3 +6,9 @@
   border: none;
   cursor: pointer;
 }
+
+.gameSvg {
+  width: 40px;
+  height: 40px;
+  fill: var(--clr-details);
+}

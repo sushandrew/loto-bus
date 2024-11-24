@@ -46,13 +46,13 @@ export default function App() {
       longitude - position.coords.longitude
     }
 
-    const data = await fetch(
+    let data = await fetch(
       "https://overpass-api.de/api/interpreter",
       {
         method: "POST",
         body: "data=" + encodeURIComponent(`
           [out:json][timeout: 90];
-          node(around:20, ${lattitude}, ${longitude});
+          node(around:150, ${lattitude}, ${longitude})[highway=bus_stop];
           <;
           relation._[type=route][route=bus];
           out tags;
@@ -60,13 +60,33 @@ export default function App() {
       }
     )
 
-    const json = await data.json()
-    const routes = json.elements
-    
+    let json = await data.json()
+    let routes = json.elements
+
     // Если не было найдено ни одного маршрута
     if (routes.length === 0) {
+      data = await fetch(
+        "https://overpass-api.de/api/interpreter",
+        {
+          method: "POST",
+          body: "data=" + encodeURIComponent(`
+            [out:json][timeout: 90];
+            node(around:20, ${lattitude}, ${longitude});
+            <;
+            relation._[type=route][route=bus];
+            out tags;
+          `)
+        }
+      )
+  
+      json = await data.json()
+      routes = json.elements
+    }
+    
+    // Если не было найдено ни одного маршрута (даже после второго запроса)
+    if (routes.length === 0) {
       setMsg({
-        msg: 'Вблизи вас не было обнаружено маршрутов :(',
+        msg: 'Вблизи вас не было обнаружено маршрутов',
         msgBottom: '｡ﾟ･（>﹏<）･ﾟ｡'
       })
 
@@ -100,7 +120,7 @@ export default function App() {
     if ('geolocation' in navigator) {
       const options = {
         enableHighAccuracy: true,
-        timeout: 60000,
+        timeout: 15000,
         maximumAge: 0
       }
 
@@ -108,7 +128,7 @@ export default function App() {
         console.warn(`error ${err.code}: ${err.message}`)
 
         setMsg({
-          msg: 'Что-то пошло не так, попробуйте позже :(',
+          msg: 'Что-то пошло не так, попробуйте позже. Возможно у вас выключен GPS',
           msgBottom: "┐('～`;)┌"
         })
       }
@@ -120,7 +140,7 @@ export default function App() {
       navigator.geolocation.getCurrentPosition(success, error, options)
     } else {
       setMsg({
-        msg: 'У вас отключено разрешение на использование GPS :(',
+        msg: 'У вас отключено разрешение на использование GPS',
         msgBottom: '(┛ಸ_ಸ)┛彡┻━┻ '
       })
     }

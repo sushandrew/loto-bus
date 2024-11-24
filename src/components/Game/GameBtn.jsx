@@ -1,12 +1,11 @@
 import styles from './GameBtn.module.css'
 
-import gameSvg from './games.svg'
-
+import GameSvg from './game.svg?react'
 
 export default function GameBtn({ onClick }) {
   return (
     <button className={styles.gameBtn} onClick={onClick}>
-      <img src={gameSvg} alt="" />
+      <GameSvg className={styles.gameSvg} />
     </button>
   )
 }

@@ -4,6 +4,7 @@
   right: 0;
   transform: translateY(-100vh);
   transition: transform .3s;
+  z-index: 100;
 }
 
 .menuInner {
