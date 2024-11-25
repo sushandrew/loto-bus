@@ -43,7 +43,7 @@ export default function App() {
       longitude = settings.longitude
     } else {
       lattitude = position.coords.lattitude
-      longitude - position.coords.longitude
+      longitude = position.coords.longitude
     }
 
     let data = await fetch(
@@ -54,7 +54,7 @@ export default function App() {
           [out:json][timeout: 90];
           node(around:150, ${lattitude}, ${longitude})[highway=bus_stop];
           <;
-          relation._[type=route][route=bus];
+          relation._(around:5)[type=route][route=bus];
           out tags;
         `)
       }
