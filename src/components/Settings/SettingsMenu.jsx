@@ -6,17 +6,17 @@ export default function SettingsMenu({ active, settngs, setSettings }) {
   function changeIsCustomCoords(event) {
     const newSettings = {
       isCustomCoords: event.target.checked,
-      lattitude: settngs.lattitude,
+      latitude: settngs.latitude,
       longitude: settngs.longitude
     }
 
     setSettings(newSettings)
   }
 
-  function changeLattitude(event) {
+  function changeLatitude(event) {
     const newSettings = {
       isCustomCoords: settngs.isCustomCoords,
-      lattitude: event.target.value,
+      latitude: event.target.value,
       longitude: settngs.longitude
     }
 
@@ -26,7 +26,7 @@ export default function SettingsMenu({ active, settngs, setSettings }) {
   function changeLongitude(event) {
     const newSettings = {
       isCustomCoords: settngs.isCustomCoords,
-      lattitude: settngs.lattitude,
+      latitude: settngs.latitude,
       longitude: event.target.value
     }
 
@@ -36,7 +36,7 @@ export default function SettingsMenu({ active, settngs, setSettings }) {
   function secretFunction() {
     const newSettings = {
       isCustomCoords: true,
-      lattitude: 51.6752768,
+      latitude: 51.6752768,
       longitude: 39.2116777
     }
 
@@ -60,8 +60,8 @@ export default function SettingsMenu({ active, settngs, setSettings }) {
             <input type="text"
                     className={styles.input}
                     placeholder='Широта'
-                    value={settngs.lattitude}
-                    onChange={changeLattitude} />
+                    value={settngs.latitude}
+                    onChange={changeLatitude} />
             <input type="text"
                     className={styles.input}
                     placeholder='Долгота'

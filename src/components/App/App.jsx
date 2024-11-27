@@ -32,17 +32,17 @@ export default function App() {
   })
   const [settings, setSettinngs] = useState({
     isCustomCoords: false,
-    lattitude: '',
+    latitude: '',
     longitude: '',
   })
 
   const fetchData = async (position) => {
-    let lattitude, longitude
+    let latitude, longitude
     if (settings.isCustomCoords) {
-      lattitude = settings.lattitude
+      latitude = settings.latitude
       longitude = settings.longitude
     } else {
-      lattitude = position.coords.lattitude
+      latitude = position.coords.latitude
       longitude = position.coords.longitude
     }
 
@@ -52,7 +52,7 @@ export default function App() {
         method: "POST",
         body: "data=" + encodeURIComponent(`
           [out:json][timeout: 90];
-          node(around:150, ${lattitude}, ${longitude})[highway=bus_stop];
+          node(around:150, ${latitude}, ${longitude})[highway=bus_stop];
           <;
           relation._(around:5)[type=route][route=bus];
           out tags;
@@ -71,7 +71,7 @@ export default function App() {
           method: "POST",
           body: "data=" + encodeURIComponent(`
             [out:json][timeout: 90];
-            node(around:20, ${lattitude}, ${longitude});
+            node(around:20, ${latitude}, ${longitude});
             <;
             relation._[type=route][route=bus];
             out tags;
